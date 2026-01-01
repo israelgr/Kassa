@@ -15,11 +15,9 @@ const router = Router();
 router.post('/login', validateBody(loginSchema), (req, res) => {
   const { username, referralCode } = req.body;
 
-  // Check if user exists
   const existingUser = userRepository.findByUsername(username);
 
   if (existingUser) {
-    // User exists - log them in (ignore referral code for existing users)
     const token = generateToken(existingUser);
     res.json({
       user: existingUser,
@@ -29,7 +27,6 @@ router.post('/login', validateBody(loginSchema), (req, res) => {
     return;
   }
 
-  // New user - handle referral code if provided
   let referrerId: number | null = null;
 
   if (referralCode) {
@@ -40,7 +37,6 @@ router.post('/login', validateBody(loginSchema), (req, res) => {
     referrerId = referrer.id;
   }
 
-  // Create new user
   const newUser = userRepository.create(username, referrerId);
   const token = generateToken(newUser);
 
@@ -56,8 +52,6 @@ router.post('/login', validateBody(loginSchema), (req, res) => {
  * Logout (client-side token invalidation)
  */
 router.post('/logout', authMiddleware, (_req, res) => {
-  // In a production app, we'd invalidate the token server-side
-  // For this simple implementation, logout is handled client-side
   res.json({ success: true });
 });
 

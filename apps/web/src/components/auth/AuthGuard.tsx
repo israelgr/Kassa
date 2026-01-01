@@ -1,5 +1,6 @@
 import { Navigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
+import { Spinner } from '../ui/spinner';
 import type { ReactNode } from 'react';
 
 interface AuthGuardProps {
@@ -12,15 +13,14 @@ export function AuthGuard({ children }: AuthGuardProps) {
 
   if (isLoading) {
     return (
-      <div className="loading-screen">
-        <div className="spinner"></div>
-        <p>Loading...</p>
+      <div className="min-h-screen flex flex-col items-center justify-center bg-background">
+        <Spinner size="lg" />
+        <p className="mt-4 text-muted-foreground">Loading...</p>
       </div>
     );
   }
 
   if (!isAuthenticated) {
-    // Preserve the intended destination and referral code
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
 

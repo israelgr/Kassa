@@ -1,6 +1,10 @@
 import { app } from './app.js';
 import { config } from './config/index.js';
+import { validateEnv } from './config/validateEnv.js';
 import { initializeDatabase } from './db/connection.js';
+
+// Validate environment variables before starting
+validateEnv();
 
 // Initialize database
 initializeDatabase();

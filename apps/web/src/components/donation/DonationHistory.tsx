@@ -1,28 +1,14 @@
 import type { Donation } from '@kassa/shared';
+import { formatCurrency, formatDate } from '../../lib/utils';
+import { Card, CardHeader, CardTitle, CardContent } from '../ui/card';
+import { Button } from '../ui/button';
+import { History } from 'lucide-react';
 
 interface DonationHistoryProps {
   donations: Donation[];
   isLoading: boolean;
   hasMore: boolean;
   onLoadMore: () => void;
-}
-
-function formatDate(dateString: string): string {
-  const date = new Date(dateString);
-  return date.toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit',
-  });
-}
-
-function formatCurrency(amount: number): string {
-  return new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-  }).format(amount);
 }
 
 export function DonationHistory({
@@ -33,38 +19,68 @@ export function DonationHistory({
 }: DonationHistoryProps) {
   if (isLoading && donations.length === 0) {
     return (
-      <div className="donation-history">
-        <h3>Your Donations</h3>
-        <div className="loading">Loading donations...</div>
-      </div>
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-xl flex items-center gap-2">
+            <History className="h-5 w-5" />
+            Your Donations
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="text-center py-8 text-muted-foreground">Loading donations...</div>
+        </CardContent>
+      </Card>
     );
   }
 
   if (donations.length === 0) {
     return (
-      <div className="donation-history">
-        <h3>Your Donations</h3>
-        <p className="empty-state">No donations yet. Make your first donation above!</p>
-      </div>
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-xl flex items-center gap-2">
+            <History className="h-5 w-5" />
+            Your Donations
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <p className="text-muted-foreground text-center py-8">
+            No donations yet. Make your first donation above!
+          </p>
+        </CardContent>
+      </Card>
     );
   }
 
   return (
-    <div className="donation-history">
-      <h3>Your Donations</h3>
-      <ul className="donation-list">
-        {donations.map((donation) => (
-          <li key={donation.id} className="donation-item">
-            <span className="donation-amount">{formatCurrency(donation.amount)}</span>
-            <span className="donation-date">{formatDate(donation.createdAt)}</span>
-          </li>
-        ))}
-      </ul>
-      {hasMore && (
-        <button onClick={onLoadMore} disabled={isLoading} className="btn btn-secondary">
-          {isLoading ? 'Loading...' : 'Load More'}
-        </button>
-      )}
-    </div>
+    <Card>
+      <CardHeader>
+        <CardTitle className="text-xl flex items-center gap-2">
+          <History className="h-5 w-5" />
+          Your Donations
+        </CardTitle>
+      </CardHeader>
+      <CardContent>
+        <ul className="space-y-3">
+          {donations.map((donation) => (
+            <li
+              key={donation.id}
+              className="flex items-center justify-between p-3 bg-muted/50 rounded-lg"
+            >
+              <span className="font-semibold text-primary-700 dark:text-primary-400">
+                {formatCurrency(donation.amount)}
+              </span>
+              <span className="text-sm text-muted-foreground">{formatDate(donation.createdAt)}</span>
+            </li>
+          ))}
+        </ul>
+        {hasMore && (
+          <div className="mt-4 text-center">
+            <Button variant="outline" onClick={onLoadMore} disabled={isLoading}>
+              {isLoading ? 'Loading...' : 'Load More'}
+            </Button>
+          </div>
+        )}
+      </CardContent>
+    </Card>
   );
 }

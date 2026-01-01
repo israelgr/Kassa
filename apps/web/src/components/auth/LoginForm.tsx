@@ -1,6 +1,10 @@
 import { useState, FormEvent } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { usernameSchema, referralCodeSchema } from '@kassa/shared';
+import { Button } from '../ui/button';
+import { Input } from '../ui/input';
+import { Label } from '../ui/label';
+import { Alert, AlertDescription } from '../ui/alert';
 
 interface LoginFormProps {
   initialReferralCode?: string;
@@ -19,14 +23,12 @@ export function LoginForm({ initialReferralCode, onSuccess }: LoginFormProps) {
     setValidationError(null);
     clearError();
 
-    // Validate username
     const usernameResult = usernameSchema.safeParse(username);
     if (!usernameResult.success) {
       setValidationError(usernameResult.error.errors[0]?.message || 'Invalid username');
       return;
     }
 
-    // Validate referral code if provided
     if (referralCode) {
       const refResult = referralCodeSchema.safeParse(referralCode);
       if (!refResult.success) {
@@ -49,10 +51,10 @@ export function LoginForm({ initialReferralCode, onSuccess }: LoginFormProps) {
   const displayError = validationError || error;
 
   return (
-    <form onSubmit={handleSubmit} className="login-form">
-      <div className="form-group">
-        <label htmlFor="username">Username</label>
-        <input
+    <form onSubmit={handleSubmit} className="space-y-6">
+      <div className="space-y-2">
+        <Label htmlFor="username">Username</Label>
+        <Input
           id="username"
           type="text"
           value={username}
@@ -62,31 +64,38 @@ export function LoginForm({ initialReferralCode, onSuccess }: LoginFormProps) {
           autoComplete="username"
           autoFocus
         />
-        <small>3-50 characters, letters, numbers, and underscores only</small>
+        <p className="text-xs text-muted-foreground">
+          3-50 characters, letters, numbers, and underscores only
+        </p>
       </div>
 
       {initialReferralCode && (
-        <div className="form-group">
-          <label htmlFor="referralCode">Referral Code</label>
-          <input
+        <div className="space-y-2">
+          <Label htmlFor="referralCode">Referral Code</Label>
+          <Input
             id="referralCode"
             type="text"
             value={referralCode}
             onChange={(e) => setReferralCode(e.target.value)}
             disabled={isSubmitting || isLoading}
             readOnly={!!initialReferralCode}
+            className="bg-muted/50"
           />
-          <small>You were referred by a friend!</small>
+          <p className="text-xs text-primary-600">You were referred by a friend!</p>
         </div>
       )}
 
-      {displayError && <div className="error-message">{displayError}</div>}
+      {displayError && (
+        <Alert variant="destructive">
+          <AlertDescription>{displayError}</AlertDescription>
+        </Alert>
+      )}
 
-      <button type="submit" disabled={isSubmitting || isLoading} className="btn btn-primary">
+      <Button type="submit" disabled={isSubmitting || isLoading} className="w-full">
         {isSubmitting ? 'Signing in...' : 'Sign In / Sign Up'}
-      </button>
+      </Button>
 
-      <p className="login-hint">
+      <p className="text-center text-sm text-muted-foreground">
         New users are automatically registered. Existing users are logged in.
       </p>
     </form>
