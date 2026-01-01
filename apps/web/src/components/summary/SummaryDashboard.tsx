@@ -39,7 +39,7 @@ export function SummaryDashboard() {
     return (
       <div className="flex flex-col items-center justify-center py-12">
         <Spinner size="lg" />
-        <p className="mt-4 text-muted-foreground">Loading your dashboard...</p>
+        <p className="mt-4 text-gray-500">Loading your dashboard...</p>
       </div>
     );
   }
@@ -47,7 +47,7 @@ export function SummaryDashboard() {
   return (
     <div className="space-y-6">
       <section>
-        <h2 className="text-2xl font-bold text-foreground mb-4">Your Impact</h2>
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Your Impact</h2>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
           <Card className="bg-gradient-to-br from-primary-500 to-primary-600">
             <CardContent className="pt-6">
@@ -72,10 +72,10 @@ export function SummaryDashboard() {
                   <Gift className="h-6 w-6 text-blue-600" />
                 </div>
                 <div>
-                  <p className="text-2xl font-bold text-foreground">
+                  <p className="text-2xl font-bold text-gray-900 dark:text-white">
                     {summary?.donationCount || 0}
                   </p>
-                  <p className="text-sm text-muted-foreground">Donations Made</p>
+                  <p className="text-sm text-gray-500">Donations Made</p>
                 </div>
               </div>
             </CardContent>
@@ -88,10 +88,10 @@ export function SummaryDashboard() {
                   <Users className="h-6 w-6 text-purple-600" />
                 </div>
                 <div>
-                  <p className="text-2xl font-bold text-foreground">
+                  <p className="text-2xl font-bold text-gray-900 dark:text-white">
                     {stats?.totalDescendants || 0}
                   </p>
-                  <p className="text-sm text-muted-foreground">People Referred</p>
+                  <p className="text-sm text-gray-500">People Referred</p>
                 </div>
               </div>
             </CardContent>
@@ -104,10 +104,10 @@ export function SummaryDashboard() {
                   <TrendingUp className="h-6 w-6 text-green-600" />
                 </div>
                 <div>
-                  <p className="text-2xl font-bold text-foreground">
+                  <p className="text-2xl font-bold text-gray-900 dark:text-white">
                     {stats ? formatCurrency(stats.totalDescendantDonations) : '$0.00'}
                   </p>
-                  <p className="text-sm text-muted-foreground">Raised by Network</p>
+                  <p className="text-sm text-gray-500">Raised by Network</p>
                 </div>
               </div>
             </CardContent>

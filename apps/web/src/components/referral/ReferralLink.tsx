@@ -34,7 +34,7 @@ export function ReferralLink({ referralUrl }: ReferralLinkProps) {
       </CardHeader>
       <CardContent>
         <div className="flex gap-2">
-          <Input type="text" value={referralUrl} readOnly className="bg-muted/50 flex-1 font-mono text-sm" />
+          <Input type="text" value={referralUrl} readOnly className="bg-gray-100 dark:bg-gray-800 flex-1 font-mono text-sm" />
           <Button variant={copied ? 'default' : 'secondary'} onClick={handleCopy}>
             {copied ? (
               <>

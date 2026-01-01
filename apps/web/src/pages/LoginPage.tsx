@@ -24,24 +24,24 @@ export function LoginPage() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-50 to-primary-100 dark:from-background dark:to-muted">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-50 to-primary-100 dark:from-gray-900 dark:to-gray-800">
         <div className="flex flex-col items-center gap-4">
           <Spinner size="lg" />
-          <p className="text-muted-foreground">Loading...</p>
+          <p className="text-gray-500">Loading...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-50 to-primary-100 dark:from-background dark:to-muted px-4">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-50 to-primary-100 dark:from-gray-900 dark:to-gray-800 px-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <div className="flex items-center justify-center gap-2 mb-2">
             <Heart className="h-10 w-10 text-primary-600" />
-            <h1 className="text-4xl font-bold text-foreground">Kassa</h1>
+            <h1 className="text-4xl font-bold text-gray-900 dark:text-white">Kassa</h1>
           </div>
-          <p className="text-muted-foreground">Viral Charity Fundraising</p>
+          <p className="text-gray-500">Viral Charity Fundraising</p>
         </div>
 
         {referralCode && (

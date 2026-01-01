@@ -13,15 +13,16 @@ export function AuthGuard({ children }: AuthGuardProps) {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-background">
+      <div className="min-h-screen flex flex-col items-center justify-center bg-white dark:bg-gray-900">
         <Spinner size="lg" />
-        <p className="mt-4 text-muted-foreground">Loading...</p>
+        <p className="mt-4 text-gray-500">Loading...</p>
       </div>
     );
   }
 
   if (!isAuthenticated) {
-    return <Navigate to="/login" state={{ from: location }} replace />;
+    const loginUrl = location.search ? `/login${location.search}` : '/login';
+    return <Navigate to={loginUrl} state={{ from: location }} replace />;
   }
 
   return <>{children}</>;

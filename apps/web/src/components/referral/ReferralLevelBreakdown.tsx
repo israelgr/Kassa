@@ -31,7 +31,7 @@ export function ReferralLevelBreakdown({
           <CardTitle className="text-xl">Referral Network</CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="text-muted-foreground text-center py-8">
+          <p className="text-gray-500 text-center py-8">
             No referrals yet. Share your link to start building your network!
           </p>
         </CardContent>

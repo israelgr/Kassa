@@ -79,7 +79,7 @@ export function DonationForm({ onDonate, onSuccess }: DonationFormProps) {
           <div className="space-y-2">
             <Label htmlFor="amount">Custom Amount</Label>
             <div className="relative">
-              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">$</span>
+              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">$</span>
               <Input
                 id="amount"
                 type="number"

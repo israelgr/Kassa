@@ -27,7 +27,7 @@ export function DonationHistory({
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="text-center py-8 text-muted-foreground">Loading donations...</div>
+          <div className="text-center py-8 text-gray-500">Loading donations...</div>
         </CardContent>
       </Card>
     );
@@ -43,7 +43,7 @@ export function DonationHistory({
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="text-muted-foreground text-center py-8">
+          <p className="text-gray-500 text-center py-8">
             No donations yet. Make your first donation above!
           </p>
         </CardContent>
@@ -64,12 +64,12 @@ export function DonationHistory({
           {donations.map((donation) => (
             <li
               key={donation.id}
-              className="flex items-center justify-between p-3 bg-muted/50 rounded-lg"
+              className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-800 rounded-lg"
             >
               <span className="font-semibold text-primary-700 dark:text-primary-400">
                 {formatCurrency(donation.amount)}
               </span>
-              <span className="text-sm text-muted-foreground">{formatDate(donation.createdAt)}</span>
+              <span className="text-sm text-gray-500">{formatDate(donation.createdAt)}</span>
             </li>
           ))}
         </ul>

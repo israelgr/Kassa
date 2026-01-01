@@ -188,24 +188,23 @@ DATABASE_PATH=./data/kassa.db
 ## Future Enhancements
 
 ### High Priority
-1. **Unit Tests**: Add Jest/Vitest tests for services and components
-2. **Integration Tests**: API endpoint testing with supertest
-3. **E2E Tests**: Playwright/Cypress for user flow testing
+1. **E2E Tests**: Playwright/Cypress for user flow testing (unit and integration tests already exist)
+2. **Increase Test Coverage**: Expand existing test suite coverage
 
 ### Medium Priority
-4. **Email Notifications**: Notify users when referrals sign up
-5. **Leaderboard**: Show top fundraisers
-6. **Donation Goals**: Set and track fundraising targets
-7. **Social Sharing**: One-click share to social media
+3. **Email Notifications**: Notify users when referrals sign up
+4. **Leaderboard**: Show top fundraisers
+5. **Donation Goals**: Set and track fundraising targets
+6. **Social Sharing**: One-click share to social media
 
 ### Nice to Have
-8. **Real-time Updates**: WebSocket for live donation notifications
-9. **Export Reports**: Download donation history as CSV/PDF
-10. **Admin Dashboard**: Manage users and view global stats
-11. **Multi-currency Support**: Accept donations in different currencies
-12. **Payment Integration**: Connect to Stripe/PayPal for real payments
-13. **PWA Support**: Installable mobile experience
-14. **Dark Mode**: Theme toggle for user preference
+7. **Real-time Updates**: WebSocket for live donation notifications
+8. **Export Reports**: Download donation history as CSV/PDF
+9. **Admin Dashboard**: Manage users and view global stats
+10. **Multi-currency Support**: Accept donations in different currencies
+11. **Payment Integration**: Connect to Stripe/PayPal for real payments
+12. **PWA Support**: Installable mobile experience
+13. **Dark Mode**: Theme toggle for user preference
 
 ## Database Schema
 

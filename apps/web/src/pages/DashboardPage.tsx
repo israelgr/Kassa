@@ -8,16 +8,16 @@ export function DashboardPage() {
   const { user, logout } = useAuth();
 
   return (
-    <div className="min-h-screen bg-background">
-      <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-sm border-b">
+    <div className="min-h-screen bg-white dark:bg-gray-900">
+      <header className="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border-b border-gray-200 dark:border-gray-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center gap-2">
               <Heart className="h-8 w-8 text-primary-600" />
-              <h1 className="text-2xl font-bold text-foreground">Kassa</h1>
+              <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Kassa</h1>
             </div>
             <div className="flex items-center gap-4">
-              <span className="text-sm text-muted-foreground">Welcome, {user?.username}</span>
+              <span className="text-sm text-gray-500">Welcome, {user?.username}</span>
               <ThemeToggle />
               <Button variant="outline" size="sm" onClick={logout}>
                 <LogOut className="h-4 w-4 mr-2" />
@@ -32,9 +32,9 @@ export function DashboardPage() {
         <SummaryDashboard />
       </main>
 
-      <footer className="bg-muted/30 border-t mt-12">
+      <footer className="bg-gray-50 dark:bg-gray-800/30 border-t border-gray-200 dark:border-gray-700 mt-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <p className="text-center text-sm text-muted-foreground">
+          <p className="text-center text-sm text-gray-500">
             Kassa - Viral Charity Fundraising | Spread the love, grow the impact
           </p>
         </div>

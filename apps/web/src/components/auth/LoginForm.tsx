@@ -64,7 +64,7 @@ export function LoginForm({ initialReferralCode, onSuccess }: LoginFormProps) {
           autoComplete="username"
           autoFocus
         />
-        <p className="text-xs text-muted-foreground">
+        <p className="text-xs text-gray-500">
           3-50 characters, letters, numbers, and underscores only
         </p>
       </div>
@@ -79,7 +79,7 @@ export function LoginForm({ initialReferralCode, onSuccess }: LoginFormProps) {
             onChange={(e) => setReferralCode(e.target.value)}
             disabled={isSubmitting || isLoading}
             readOnly={!!initialReferralCode}
-            className="bg-muted/50"
+            className="bg-gray-100 dark:bg-gray-700"
           />
           <p className="text-xs text-primary-600">You were referred by a friend!</p>
         </div>
@@ -95,7 +95,7 @@ export function LoginForm({ initialReferralCode, onSuccess }: LoginFormProps) {
         {isSubmitting ? 'Signing in...' : 'Sign In / Sign Up'}
       </Button>
 
-      <p className="text-center text-sm text-muted-foreground">
+      <p className="text-center text-sm text-gray-500">
         New users are automatically registered. Existing users are logged in.
       </p>
     </form>

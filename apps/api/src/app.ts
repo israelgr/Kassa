@@ -19,19 +19,22 @@ app.use(
   })
 );
 
-const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000,
-  max: 100,
-  message: { error: 'RATE_LIMITED', message: 'Too many requests, please try again later' },
-});
-app.use(limiter);
+// Only apply rate limiting in production
+if (config.isProduction) {
+  const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000,
+    max: 100,
+    message: { error: 'RATE_LIMITED', message: 'Too many requests, please try again later' },
+  });
+  app.use(limiter);
 
-const authLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000,
-  max: 20,
-  message: { error: 'RATE_LIMITED', message: 'Too many login attempts, please try again later' },
-});
-app.use('/api/v1/auth', authLimiter);
+  const authLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000,
+    max: 20,
+    message: { error: 'RATE_LIMITED', message: 'Too many login attempts, please try again later' },
+  });
+  app.use('/api/v1/auth', authLimiter);
+}
 
 app.use(express.json({ limit: '10kb' }));
 app.use('/api/v1', apiRoutes);

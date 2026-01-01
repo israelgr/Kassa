@@ -41,8 +41,8 @@ export const userRepository = {
   },
 
   create(username: string, referrerId: number | null = null): User {
-    // Generate UUID v4 without hyphens for referral code
-    const referralCode = randomUUID().replace(/-/g, '');
+    // Generate UUID v4 without hyphens for referral code (lowercase to match lookup)
+    const referralCode = randomUUID().replace(/-/g, '').toLowerCase();
 
     const result = db
       .prepare(
